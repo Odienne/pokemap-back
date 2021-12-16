@@ -1,8 +1,21 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './App.css';
+import 'leaflet/dist/leaflet.css';
+import React, { useState, useEffect } from 'react';
+import {getData} from "./services/api";
+
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+
 
 // jshint ignore:start
 function App() {
+  const [data, setData] = useState();
+
+  useEffect(async () => {
+    console.log('cc')
+    const res = await getData();
+    console.log(res)
+  }, [])
+
   return (
     <div className="App">
       <MapContainer center={[46.0, 2.0]} zoom={6} scrollWheelZoom={true}>
